@@ -25,5 +25,12 @@ List<List<int>> getList(List<String> input) {
 }
 
 int similarityScore(List<List<int>> input) {
-
+  List<int> left = input[0];
+  List<int> right = input[1];
+int similarityScore =0;
+for (int i = 0; i<left.length; i++){
+  int occurance = right.where((n) => n == left[i]).length;
+  similarityScore += (occurance * left[i]);
+}
+return similarityScore;
 }
