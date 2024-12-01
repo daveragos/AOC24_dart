@@ -5,9 +5,7 @@ void main() async {
   final input = await File('$currentPath/input.txt').readAsLines();
 
   final list = getList(input);
-  print(list[0][0]);
-  print(list[1][0]);
-  solvePart2(input);
+  print(findDistance(list));
 }
 
 List<List<int>> getList(List<String> input) {
@@ -21,9 +19,17 @@ List<List<int>> getList(List<String> input) {
     right.add(int.parse(numList[1]));
 
   }
+  left.sort();
+  right.sort();
   return [left, right];
 }
 
-void solvePart2(List<String> input) {
-  print('Part 2 result:');
+int findDistance(List<List<int>> input) {
+  List<int> left = input[0];
+  List<int> right = input[1];
+int distance =0;
+for (int i=0; i<left.length; i++){
+distance += (right[i] - left[i]).abs();
+}
+return distance;
 }
